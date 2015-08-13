@@ -23,7 +23,7 @@ class rpm::stig($known_unsigned_packages=[]) {
 # Use RPM's verify feature to cryptographically verify the integrity of
 # installed software for DBMSes included with RHEL.
     file { "/etc/cron.monthly/rpmV.cron":
-        owner => root, group => 0, mode => 0700,
+        owner => root, group => 0, mode => '0700',
         source => "puppet:///modules/rpm/rpmV.cron",
     }
 # \implements{unixsrg}{GEN008800} Make sure all packages installed have
@@ -39,7 +39,7 @@ class rpm::stig($known_unsigned_packages=[]) {
 # weaknesses.
 
     file { "/etc/cron.weekly/rpm-signatures.cron":
-        owner => root, group => 0, mode => 0700,
+        owner => root, group => 0, mode => '0700',
         content => template("rpm/rpm-signatures.cron.erb"),
     }
 }
